@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#070709">
+<title>Vani — Web Player</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="covers/01.jpg">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="vinyl mini" aria-hidden="true"><span></span></div>
+    <div>
+      <h1>Vani</h1>
+      <p>web player</p>
+    </div>
+  </div>
+  <input id="search" type="search" placeholder="Search songs or artists…" autocomplete="off">
+</header>
+
+<main>
+  <ol id="tracklist"></ol>
+  <p id="empty" hidden>No songs match your search.</p>
+</main>
+
+<footer id="playerbar">
+  <div class="pb-row">
+    <button id="np-open" class="np-open" aria-label="Open now playing">
+      <img id="pb-cover" src="covers/01.jpg" alt="">
+      <span class="pb-meta">
+        <strong id="pb-title">Pick a song</strong>
+        <span id="pb-artist">30 tracks</span>
+      </span>
+    </button>
+    <div class="transport">
+      <button id="btn-shuffle" class="icon-btn" aria-label="Shuffle" title="Shuffle">
+        <svg viewBox="0 0 24 24"><path d="M10.6 9.2 8 11.8l2.6 2.6M4 5h4l8 14h4m0 0-2.7-2.7M20 19l-2.7 2.7M4 19h4l2.5-4.4M13.5 9.4 16 5h4m0 0-2.7-2.7M20 5l-2.7 2.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button id="btn-prev" class="icon-btn" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M6 5v14M20 5l-11 7 11 7z" fill="currentColor"/></svg>
+      </button>
+      <button id="btn-play" class="play-btn" aria-label="Play">
+        <svg id="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+        <svg id="ic-pause" viewBox="0 0 24 24" hidden><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
+      </button>
+      <button id="btn-next" class="icon-btn" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M18 5v14M4 5l11 7-11 7z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="pb-row seek-row">
+    <span id="t-cur" class="time">0:00</span>
+    <input id="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek">
+    <span id="t-total" class="time">0:00</span>
+    <button id="btn-mute" class="icon-btn sm" aria-label="Mute">
+      <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path id="vol-waves" d="M16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <input id="vol" type="range" min="0" max="100" value="90" aria-label="Volume">
+  </div>
+</footer>
+
+<div id="nowplaying" hidden>
+  <button id="np-close" class="icon-btn" aria-label="Close">✕</button>
+  <div class="vinyl big" id="np-vinyl" aria-hidden="true"><img id="np-cover" src="covers/01.jpg" alt=""></div>
+  <h2 id="np-title">Pick a song</h2>
+  <p id="np-artist">—</p>
+  <div class="seek-row np-seek">
+    <span id="np-cur" class="time">0:00</span>
+    <input id="np-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek">
+    <span id="np-total" class="time">0:00</span>
+  </div>
+  <div class="transport big">
+    <button id="np-prev" class="icon-btn" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M6 5v14M20 5l-11 7 11 7z" fill="currentColor"/></svg></button>
+    <button id="np-play" class="play-btn" aria-label="Play">
+      <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      <svg class="ic-pause" viewBox="0 0 24 24" hidden><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
+    </button>
+    <button id="np-next" class="icon-btn" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M18 5v14M4 5l11 7-11 7z" fill="currentColor"/></svg></button>
+  </div>
+  <p class="np-count"><span id="np-pos">–</span> of 30 · streaming from your cloud library</p>
+</div>
+
+<div id="toast" hidden></div>
+
+<script src="catalog.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
